@@ -1,7 +1,7 @@
 ---
 title: Multi Task NLP
 emoji: 🐨
-colorFrom: orange
+colorFrom: gray
 colorTo: yellow
 sdk: streamlit
 sdk_version: 1.10.0
