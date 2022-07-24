@@ -4,7 +4,7 @@ nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 
 
-class POSTagging():
+class POSTagging:
     def __init__(self):
        pass
 

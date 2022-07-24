@@ -4,7 +4,7 @@ import torch
 import pandas as pd
 
 
-class SentimentAnalysis():
+class SentimentAnalysis:
     def __init__(self):
         # Load Tokenizer & Model
         hub_location = 'cardiffnlp/twitter-roberta-base-sentiment'

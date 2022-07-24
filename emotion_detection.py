@@ -4,7 +4,7 @@ import torch
 import pandas as pd
 
 
-class EmotionDetection():
+class EmotionDetection:
     def __init__(self, chunksize=512):
         hub_location = 'cardiffnlp/twitter-roberta-base-emotion'
         self.tokenizer = AutoTokenizer.from_pretrained(hub_location)

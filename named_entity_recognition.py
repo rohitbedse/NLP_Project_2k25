@@ -2,7 +2,7 @@ from transformers import AutoTokenizer, AutoModelForTokenClassification
 from transformers import pipeline
 
 
-class NamedEntityRecognition():
+class NamedEntityRecognition:
     def __init__(self):
         tokenizer = AutoTokenizer.from_pretrained("xlm-roberta-large-finetuned-conll03-english")
         model = AutoModelForTokenClassification.from_pretrained("xlm-roberta-large-finetuned-conll03-english")
