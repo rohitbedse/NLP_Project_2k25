@@ -3,11 +3,12 @@ from transformers import pipeline
 
 
 class NamedEntityRecognition:
-    """ This class is an example
+    """ Named Entity Recognition on text data
 
     Attributes:
-        class_attribute (str): (class attribute) The class attribute
-        instance_attribute (str): The instance attribute
+        tokenizer: An instance of Hugging Face Tokenizer
+        model: An instance of Hugging Face Model
+        nlp: An instance of Hugging Face Named Entity Recognition pipeline
     """
 
     def __init__(self):

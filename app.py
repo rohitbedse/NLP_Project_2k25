@@ -103,7 +103,7 @@ if page == "Welcome!":
             * Emotion Detection
             * Named Entity Recognition
             
-        More features may be added in the future including article/tweet/youtube input and model quality improvements, 
+        More features may be added in the future including article/tweet/youtube input, improved text annotation, model quality improvements, 
         depending on community feedback. Please reach out to me at miesner.jacob@gmail.com or at my Linkedin page listed 
         below if you have ideas or suggestions for improvement.
         
@@ -123,7 +123,7 @@ if page == "Welcome!":
            
            [Jacob Miesner's Website](https://www.jacobmiesner.com)
               
-        * The prediction justification for some of the tasks are printed as the model views them. For this reason the text may contain special tokens like [CLS] or [SEP] or even hashtags splitting words. If you are knowledgeable about language models and how they work these will be familiar, if you do not have prior experience with language models you can ignore these characters.  
+        * The prediction justification for some of the tasks are printed as the model views them. For this reason the text may contain special tokens like [CLS] or [SEP] or even hashtags splitting words. If you are are familiar with language models you will recognize these, if you do not have prior experience with language models you can ignore these characters.  
         """
     )
 

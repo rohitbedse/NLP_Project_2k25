@@ -6,11 +6,10 @@ import en_core_web_sm
 
 
 class KeywordExtractor:
-    """ This class is an example
+    """ Keyword Extraction on text data
 
     Attributes:
-        class_attribute (str): (class attribute) The class attribute
-        instance_attribute (str): The instance attribute
+        nlp: An instance English pipeline optimized for CPU for spacy
     """
 
     def __init__(self):

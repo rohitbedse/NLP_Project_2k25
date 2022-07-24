@@ -5,12 +5,7 @@ nltk.download('averaged_perceptron_tagger')
 
 
 class POSTagging:
-    """ This class is an example
-
-    Attributes:
-        class_attribute (str): (class attribute) The class attribute
-        instance_attribute (str): The instance attribute
-    """
+    """Part of Speech Tagging on text data"""
 
     def __init__(self):
        pass

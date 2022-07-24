@@ -5,11 +5,12 @@ import pandas as pd
 
 
 class SentimentAnalysis:
-    """ This class is an example
+    """ Sentiment on text data
 
     Attributes:
-        class_attribute (str): (class attribute) The class attribute
-        instance_attribute (str): The instance attribute
+        tokenizer: An instance of Hugging Face Tokenizer
+        model: An instance of Hugging Face Model
+        explainer: An instance of SequenceClassificationExplainer from Transformers interpret
     """
 
     def __init__(self):
