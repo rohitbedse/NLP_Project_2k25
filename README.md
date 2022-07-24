@@ -1,8 +1,6 @@
 ---
 title: Multi Task NLP
-emoji: 🐨
-colorFrom: gray
-colorTo: yellow
+emoji: 🤖👽🔥💯
 sdk: streamlit
 sdk_version: 1.10.0
 app_file: app.py
