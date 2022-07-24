@@ -6,11 +6,28 @@ import en_core_web_sm
 
 
 class KeywordExtractor:
+    """ This class is an example
+
+    Attributes:
+        class_attribute (str): (class attribute) The class attribute
+        instance_attribute (str): The instance attribute
+    """
+
     def __init__(self):
         self.nlp = en_core_web_sm.load()
         self.nlp.add_pipe("textrank")
 
     def get_keywords(self, text, max_keywords):
+        """
+        The function to add two Complex Numbers.
+
+        Parameters:
+            num (ComplexNumber): The complex number to be added.
+
+        Returns:
+            ComplexNumber: A complex number which contains the sum.
+        """
+
         doc = self.nlp(text)
 
         kws = [i.text for i in doc._.phrases[:max_keywords]]
@@ -18,6 +35,16 @@ class KeywordExtractor:
         return kws
 
     def get_keyword_indicies(self, string_list, text):
+        """
+        The function to add two Complex Numbers.
+
+        Parameters:
+            num (ComplexNumber): The complex number to be added.
+
+        Returns:
+            ComplexNumber: A complex number which contains the sum.
+        """
+
         out = []
         for s in string_list:
             indicies = [[m.start(), m.end()] for m in re.finditer(re.escape(s), text)]
@@ -26,6 +53,16 @@ class KeywordExtractor:
         return out
 
     def merge_overlapping_indicies(self, indicies):
+        """
+        The function to add two Complex Numbers.
+
+        Parameters:
+            num (ComplexNumber): The complex number to be added.
+
+        Returns:
+            ComplexNumber: A complex number which contains the sum.
+        """
+
         # Sort the array on the basis of start values of intervals.
         indicies.sort()
         stack = []
@@ -41,6 +78,16 @@ class KeywordExtractor:
         return stack
 
     def merge_until_finished(self, indicies):
+        """
+        The function to add two Complex Numbers.
+
+        Parameters:
+            num (ComplexNumber): The complex number to be added.
+
+        Returns:
+            ComplexNumber: A complex number which contains the sum.
+        """
+
         len_indicies = 0
         while True:
             merged = self.merge_overlapping_indicies(indicies)
@@ -51,9 +98,15 @@ class KeywordExtractor:
                 len_indicies = len(merged)
 
     def get_annotation(self, text, indicies, kws):
+        """
+        The function to add two Complex Numbers.
 
-        # Convert indicies to list
-        # kws = kws + [i.lower() for i in kws]
+        Parameters:
+            num (ComplexNumber): The complex number to be added.
+
+        Returns:
+            ComplexNumber: A complex number which contains the sum.
+        """
 
         arr = list(text)
         for idx in sorted(indicies, reverse=True):
@@ -71,6 +124,15 @@ class KeywordExtractor:
         return final_annotation
 
     def generate(self, text, max_keywords):
+        """
+        The function to add two Complex Numbers.
+
+        Parameters:
+            num (ComplexNumber): The complex number to be added.
+
+        Returns:
+            ComplexNumber: A complex number which contains the sum.
+        """
 
         kws = self.get_keywords(text, max_keywords)
 

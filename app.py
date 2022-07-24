@@ -44,6 +44,8 @@ pos_tagger = load_pos_model()
 emotion_detector = load_emotion_model()
 ner = load_ner_model()
 
+example_text = "This is example text that contains both names of organizations like Hugging Face and cities like New York, all while portraying an upbeat attitude."
+
 with st.sidebar:
     page = option_menu(menu_title='Menu',
                        menu_icon="robot",
@@ -134,7 +136,7 @@ elif page == "Sentiment Analysis":
         """
     )
 
-    text = st.text_area("Paste text here", value="")
+    text = st.text_area("Paste text here", value=example_text)
 
     if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
@@ -158,7 +160,7 @@ elif page == "Keyword Extraction":
         """
     )
 
-    text = st.text_area("Paste text here", value="")
+    text = st.text_area("Paste text here", value=example_text)
 
     max_keywords = st.slider('# of Keywords Max Limit', min_value=1, max_value=10, value=5, step=1)
 
@@ -191,7 +193,7 @@ elif page == "Part of Speech Tagging":
         """
     )
 
-    text = st.text_area("Paste text here", value="")
+    text = st.text_area("Paste text here", value=example_text)
 
     if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
@@ -213,7 +215,7 @@ elif page == "Emotion Detection":
         """
     )
 
-    text = st.text_area("Paste text here", value="")
+    text = st.text_area("Paste text here", value=example_text)
 
     if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
@@ -237,7 +239,7 @@ elif page == "Named Entity Recognition":
         """
     )
 
-    text = st.text_area("Paste text here", value="")
+    text = st.text_area("Paste text here", value=example_text)
 
     if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
