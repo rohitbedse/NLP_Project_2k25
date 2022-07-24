@@ -108,8 +108,7 @@ if page == "Welcome!":
     st.subheader("Notes")
     st.write(
         """
-        * This dashboard was contsructed by Jacob Miesner, but every resource used is open-source! If you are interested
-        in his other works you can view them here:
+        * This dashboard was constructed by myself, but every resource used is open-source! If you are interested in my other works you can view them here:
         
            [Project Github](https://github.com/MiesnerJacob/nlp-dashboard)
            
