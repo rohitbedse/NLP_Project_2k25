@@ -1,5 +1,5 @@
 sklearn~=0.0
-tensorflow~=2.4.0
+tensorflow~=2.5.0
 tensorflow-hub~=0.12.0
 nltk~=3.5
 typing-extensions==3.7.4.3
