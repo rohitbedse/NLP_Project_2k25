@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-from text_annotation import annotated_text
+from annotated_text import annotated_text
 from streamlit_option_menu import option_menu
 from sentiment_analysis import SentimentAnalysis
 from keyword_extraction import KeywordExtractor
@@ -134,7 +134,7 @@ elif page == "Sentiment Analysis":
 
     text = st.text_area("Paste text here", value="")
 
-    if st.button('Start!'):
+    if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
             preds, html = sentiment_analyzer.run(text)
             st.success('All done!')
@@ -160,7 +160,7 @@ elif page == "Keyword Extraction":
 
     max_keywords = st.slider('# of Keywords Max Limit', min_value=1, max_value=10, value=5, step=1)
 
-    if st.button('Start!'):
+    if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
             annotation, keywords = keyword_extractor.generate(text, max_keywords)
             st.success('All done!')
@@ -191,7 +191,7 @@ elif page == "Part of Speech Tagging":
 
     text = st.text_area("Paste text here", value="")
 
-    if st.button('Start!'):
+    if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
             preds = pos_tagger.classify(text)
             st.success('All done!')
@@ -213,7 +213,7 @@ elif page == "Emotion Detection":
 
     text = st.text_area("Paste text here", value="")
 
-    if st.button('Start!'):
+    if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
             preds, html = emotion_detector.run(text)
             st.success('All done!')
@@ -237,7 +237,7 @@ elif page == "Named Entity Recognition":
 
     text = st.text_area("Paste text here", value="")
 
-    if st.button('Start!'):
+    if st.button('🔥 Run!'):
         with st.spinner("Loading..."):
             preds, ner_annotation = ner.classify(text)
             st.success('All done!')
