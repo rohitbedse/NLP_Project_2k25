@@ -149,7 +149,7 @@ elif page == "Sentiment Analysis":
             st.write("")
             st.subheader("Sentiment Justification")
             raw_html = html._repr_html_()
-            st.components.v1.html(raw_html)
+            st.components.v1.html(raw_html, height=500)
 
 elif page == "Keyword Extraction":
     st.header('Keyword Extraction')
