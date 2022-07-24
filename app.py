@@ -56,9 +56,9 @@ with st.sidebar:
                                 "Emotion Detection",
                                 "Named Entity Recognition"],
                        icons=["house-door",
-                              "emoji-heart-eyes",
-                              "key",
                               "chat-dots",
+                              "key",
+                              "tag",
                               "emoji-heart-eyes",
                               "building"],
                        default_index=0
