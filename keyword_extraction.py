@@ -2,11 +2,12 @@ import spacy
 import pytextrank
 import re
 from operator import itemgetter
+import en_core_web_sm
 
 
 class KeywordExtractor:
     def __init__(self):
-        self.nlp = spacy.load("en_core_web_sm")
+        self.nlp = en_core_web_sm.load()
         self.nlp.add_pipe("textrank")
 
     def get_keywords(self, text, max_keywords):
