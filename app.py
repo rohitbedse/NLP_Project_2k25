@@ -123,10 +123,7 @@ if page == "Welcome!":
            
            [Jacob Miesner's Website](https://www.jacobmiesner.com)
               
-        * The prediction justification for some of the tasks are printed as the model views them. For this reason the text 
-        may contain special tokens like [CLS] or [SEP] or even hashtags splitting words. If you are knowledgeable about
-        language models and how they work these will be familiar, if you do not have prior experience with language models
-        you can ignore these characters.  
+        * The prediction justification for some of the tasks are printed as the model views them. For this reason the text may contain special tokens like [CLS] or [SEP] or even hashtags splitting words. If you are knowledgeable about language models and how they work these will be familiar, if you do not have prior experience with language models you can ignore these characters.  
         """
     )
 
