@@ -68,12 +68,6 @@ st.title('Open-source NLP')
 
 if page == "Welcome!":
     st.header('Welcome!')
-    st.write(
-        """
-        Type or Paste in your text and flip through the pages to perform NLP tasks on-demand. Supercharge 
-        your workflow with this platform built using 100% open-source resources!
-        """
-    )
 
     st.markdown("![Alt Text](https://media.giphy.com/media/2fEvoZ9tajMxq/giphy.gif)")
     st.write(
@@ -82,9 +76,20 @@ if page == "Welcome!":
      
         """
     )
+
+    st.subheader("Quickstart")
+    st.write(
+        """
+        Replace the example text below and flip through the pages in the menu to perform NLP tasks on-demand!
+        Feel free to use the example text for a test run. 
+        """
+    )
+
+    text = st.text_area("Paste text here", value=example_text)
+
     st.subheader("Introduction")
     st.write("""
-        Welcome! This application is a celebration of open-source and the power that programmers have been granted today
+        Hello! This application is a celebration of open-source and the power that programmers have been granted today
         by those who give back to the community. This tool was constructed using Streamlit, Huggingface Transformers, 
         Transformers-Interpret, NLTK, Spacy, amongst other open-source Python libraries and models. 
         
