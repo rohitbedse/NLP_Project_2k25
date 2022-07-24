@@ -96,8 +96,9 @@ if page == "Welcome!":
             * Emotion Detection
             * Named Entity Recognition
             
-        More features may be added in the future, depending on community feedback. Please reach out to me at 
-        miesner.jacob@gmail.com or at my Linkedin page listed below if you have ideas or suggestions for improvement.
+        More features may be added in the future including article/tweet/youtube input and model quality improvements, 
+        depending on community feedback. Please reach out to me at miesner.jacob@gmail.com or at my Linkedin page listed 
+        below if you have ideas or suggestions for improvement.
         
         If you would like to contribute yourself, feel free to fork the Github repository listed below and submit a merge request.
         """

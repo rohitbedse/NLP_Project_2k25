@@ -5,7 +5,7 @@ import pandas as pd
 
 
 class EmotionDetection:
-    def __init__(self, chunksize=512):
+    def __init__(self):
         hub_location = 'cardiffnlp/twitter-roberta-base-emotion'
         self.tokenizer = AutoTokenizer.from_pretrained(hub_location)
         self.model = AutoModelForSequenceClassification.from_pretrained(hub_location)
