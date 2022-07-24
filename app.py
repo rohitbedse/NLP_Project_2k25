@@ -68,7 +68,8 @@ if page == "Welcome!":
     st.header('Welcome!')
     st.write(
         """
-        Supercharge your workflow with this platform built using 100% open-source resources!
+        Type or Paste in your text and flip through the pages to perform NLP tasks on-demand. Supercharge 
+        your workflow with this platform built using 100% open-source resources!
         """
     )
 
