@@ -1,12 +1,11 @@
-import spacy
-import pytextrank
 import re
 from operator import itemgetter
 import en_core_web_sm
 
 
 class KeywordExtractor:
-    """ Keyword Extraction on text data
+    """
+    Keyword Extraction on text data
 
     Attributes:
         nlp: An instance English pipeline optimized for CPU for spacy
@@ -18,13 +17,13 @@ class KeywordExtractor:
 
     def get_keywords(self, text, max_keywords):
         """
-        The function to add two Complex Numbers.
+        Extract keywords from text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to extract keywords from
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            kws (list): list of extracted keywords
         """
 
         doc = self.nlp(text)
@@ -33,41 +32,43 @@ class KeywordExtractor:
 
         return kws
 
-    def get_keyword_indicies(self, string_list, text):
+    def get_keyword_indices(self, kws, text):
         """
-        The function to add two Complex Numbers.
+        Extract keywords from text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            kws (list): list of extracted keywords
+            text (str): The user input string to extract keywords from
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            keyword_indices (list): list of indices for keyword boundaries in text
         """
 
-        out = []
-        for s in string_list:
-            indicies = [[m.start(), m.end()] for m in re.finditer(re.escape(s), text)]
-            out.extend(indicies)
+        keyword_indices = []
+        for s in kws:
+            indices = [[m.start(), m.end()] for m in re.finditer(re.escape(s), text)]
+            keyword_indices.extend(indices)
 
-        return out
+        return keyword_indices
 
-    def merge_overlapping_indicies(self, indicies):
+    def merge_overlapping_indices(self, keyword_indices):
         """
-        The function to add two Complex Numbers.
+        Merge overlapping keyword indices.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            keyword_indices (list): list of indices for keyword boundaries in text
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            keyword_indices (list): list of indices for keyword boundaries in with overlapping combined
         """
 
         # Sort the array on the basis of start values of intervals.
-        indicies.sort()
+        keyword_indices.sort()
+
         stack = []
         # insert first interval into stack
-        stack.append(indicies[0])
-        for i in indicies[1:]:
+        stack.append(keyword_indices[0])
+        for i in keyword_indices[1:]:
             # Check for overlapping interval,
             # if interval overlap
             if (stack[-1][0] <= i[0] <= stack[-1][-1]) or (stack[-1][-1] == i[0]-1):
@@ -76,69 +77,71 @@ class KeywordExtractor:
                 stack.append(i)
         return stack
 
-    def merge_until_finished(self, indicies):
+    def merge_until_finished(self, keyword_indices):
         """
-        The function to add two Complex Numbers.
+        Loop until no overlapping keyword indices left.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            keyword_indices (list): list of indices for keyword boundaries in text
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            keyword_indices (list): list of indices for keyword boundaries in with overlapping combined
         """
 
-        len_indicies = 0
+        len_indices = 0
         while True:
-            merged = self.merge_overlapping_indicies(indicies)
-            if len_indicies == len(merged):
-                out_indicies = sorted(merged, key=itemgetter(0))
-                return out_indicies
+            merged = self.merge_overlapping_indices(keyword_indices)
+            if len_indices == len(merged):
+                out_indices = sorted(merged, key=itemgetter(0))
+                return out_indices
             else:
-                len_indicies = len(merged)
+                len_indices = len(merged)
 
-    def get_annotation(self, text, indicies, kws):
+    def get_annotation(self, text, keyword_indices):
         """
-        The function to add two Complex Numbers.
+        Create text annotation for extracted keywords.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            keyword_indices (list): list of indices for keyword boundaries in text
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            annotation (list): list of tuples for generating html
         """
 
         arr = list(text)
-        for idx in sorted(indicies, reverse=True):
+        for idx in sorted(keyword_indices, reverse=True):
             arr.insert(idx[0], "<kw>")
             arr.insert(idx[1]+1, "XXXxxxXXXxxxXXX <kw>")
-        annotation = ''.join(arr)
-        split = annotation.split('<kw>')
-        final_annotation = [(x.replace('XXXxxxXXXxxxXXX ', ''), "KEY", "#26aaef") if "XXXxxxXXXxxxXXX" in x else x for x in split]
+        joined_annotation = ''.join(arr)
+        split = joined_annotation.split('<kw>')
+        annotation = [(x.replace('XXXxxxXXXxxxXXX ', ''), "KEY", "#26aaef") if "XXXxxxXXXxxxXXX" in x else x for x in split]
 
         kws_check = []
-        for i in final_annotation:
+        for i in annotation:
             if type(i) is tuple:
                 kws_check.append(i[0])
 
-        return final_annotation
+        return annotation
 
     def generate(self, text, max_keywords):
         """
-        The function to add two Complex Numbers.
+        Create text annotation for extracted keywords.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to extract keywords from
+            max_keywords (int): Limit on number of keywords to generate
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            annotation (list): list of tuples for generating html
+            kws (list): list of extracted keywords
         """
 
         kws = self.get_keywords(text, max_keywords)
 
-        indicies = list(self.get_keyword_indicies(kws, text))
-        if indicies:
-            indicies_merged = self.merge_until_finished(indicies)
-            annotation = self.get_annotation(text, indicies_merged, kws)
+        indices = list(self.get_keyword_indices(kws, text))
+        if indices:
+            indices_merged = self.merge_until_finished(indices)
+            annotation = self.get_annotation(text, indices_merged, kws)
         else:
             annotation = None
 

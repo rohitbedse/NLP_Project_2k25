@@ -3,7 +3,8 @@ from transformers import pipeline
 
 
 class NamedEntityRecognition:
-    """ Named Entity Recognition on text data
+    """
+    Named Entity Recognition on text data.
 
     Attributes:
         tokenizer: An instance of Hugging Face Tokenizer
@@ -18,13 +19,14 @@ class NamedEntityRecognition:
 
     def get_annotation(self, preds, text):
         """
-        The function to add two Complex Numbers.
+        Get html annotation for displaying entities over text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            preds (dict): List of entities and their associated metadata
+            text (str): The user input string to generate entity tags for
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            final_annotation (list): List of tuples to pass to text annotation html creator
         """
 
         splits = [0]
@@ -48,13 +50,14 @@ class NamedEntityRecognition:
 
     def classify(self, text):
         """
-        The function to add two Complex Numbers.
+        Recognize Named Entities in text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to generate entity tags for
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            predictions (str): The user input string to generate entity tags for
+            ner_annotation (str): The user input string to generate entity tags for
         """
 
         preds = self.nlp(text)

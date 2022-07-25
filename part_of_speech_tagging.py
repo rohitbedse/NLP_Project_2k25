@@ -12,15 +12,15 @@ class POSTagging:
 
     def classify(self, text):
         """
-        The function to add two Complex Numbers.
+        Generate Part of Speech tags.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to generate tags for
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            predictions (list): list of tuples containing words and their respective tags
         """
 
         text = word_tokenize(text)
-        preds = nltk.pos_tag(text)
-        return preds
+        predictions = nltk.pos_tag(text)
+        return predictions

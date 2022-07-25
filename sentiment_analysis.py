@@ -5,7 +5,8 @@ import pandas as pd
 
 
 class SentimentAnalysis:
-    """ Sentiment on text data
+    """
+    Sentiment on text data.
 
     Attributes:
         tokenizer: An instance of Hugging Face Tokenizer
@@ -32,13 +33,13 @@ class SentimentAnalysis:
 
     def justify(self, text):
         """
-        The function to add two Complex Numbers.
+        Get html annotation for displaying sentiment justification over text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to sentiment justification
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            html (hmtl): html object for plotting sentiment prediction justification
         """
 
         word_attributions = self.explainer(text)
@@ -48,35 +49,36 @@ class SentimentAnalysis:
 
     def classify(self, text):
         """
-        The function to add two Complex Numbers.
+        Recognize Sentiment in text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to perform sentiment classification on
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            predictions (str): The predicted probabilities for sentiment classes
         """
 
         tokens = self.tokenizer.encode_plus(text, add_special_tokens=False, return_tensors='pt')
         outputs = self.model(**tokens)
         probs = torch.nn.functional.softmax(outputs[0], dim=-1)
         probs = probs.mean(dim=0).detach().numpy()
-        preds = pd.Series(probs, index=["Negative", "Neutral", "Positive"], name='Predicted Probability')
+        predictions = pd.Series(probs, index=["Negative", "Neutral", "Positive"], name='Predicted Probability')
 
-        return preds
+        return predictions
 
     def run(self, text):
         """
-        The function to add two Complex Numbers.
+        Classify and Justify Sentiment in text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to perform sentiment classification on
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            predictions (str): The predicted probabilities for sentiment classes
+            html (hmtl): html object for plotting sentiment prediction justification
         """
 
-        preds = self.classify(text)
+        predictions = self.classify(text)
         html = self.justify(text)
 
-        return preds, html
+        return predictions, html

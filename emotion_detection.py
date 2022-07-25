@@ -5,7 +5,8 @@ import pandas as pd
 
 
 class EmotionDetection:
-    """ Emotion Detection on text data
+    """
+    Emotion Detection on text data.
 
     Attributes:
         tokenizer: An instance of Hugging Face Tokenizer
@@ -21,13 +22,13 @@ class EmotionDetection:
 
     def justify(self, text):
         """
-        The function to add two Complex Numbers.
+        Get html annotation for displaying emotion justification over text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to emotion justification
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            html (hmtl): html object for plotting emotion prediction justification
         """
 
         word_attributions = self.explainer(text)
@@ -37,13 +38,13 @@ class EmotionDetection:
 
     def classify(self, text):
         """
-        The function to add two Complex Numbers.
+        Recognize Emotion in text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to perform emotion classification on
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            predictions (str): The predicted probabilities for emotion classes
         """
 
         tokens = self.tokenizer.encode_plus(text, add_special_tokens=False, return_tensors='pt')
@@ -57,13 +58,14 @@ class EmotionDetection:
 
     def run(self, text):
         """
-        The function to add two Complex Numbers.
+        Classify and Justify Emotion in text.
 
         Parameters:
-            num (ComplexNumber): The complex number to be added.
+            text (str): The user input string to perform emotion classification on
 
         Returns:
-            ComplexNumber: A complex number which contains the sum.
+            predictions (str): The predicted probabilities for emotion classes
+            html (hmtl): html object for plotting emotion prediction justification
         """
 
         preds = self.classify(text)
