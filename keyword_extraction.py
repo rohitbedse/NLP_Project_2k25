@@ -90,7 +90,10 @@ class KeywordExtractor:
 
         len_indices = 0
         while True:
+            # Merge overlapping indices
             merged = self.merge_overlapping_indices(keyword_indices)
+            # Check to see if merging reduced number of annotation indices
+            # If merging did not reduce list return final indicies
             if len_indices == len(merged):
                 out_indices = sorted(merged, key=itemgetter(0))
                 return out_indices
@@ -108,18 +111,22 @@ class KeywordExtractor:
             annotation (list): list of tuples for generating html
         """
 
+        # Turn list to numpy array
         arr = list(text)
+
+        # Loop through indices in list and insert delimeters
         for idx in sorted(keyword_indices, reverse=True):
             arr.insert(idx[0], "<kw>")
-            arr.insert(idx[1]+1, "XXXxxxXXXxxxXXX <kw>")
-        joined_annotation = ''.join(arr)
-        split = joined_annotation.split('<kw>')
-        annotation = [(x.replace('XXXxxxXXXxxxXXX ', ''), "KEY", "#26aaef") if "XXXxxxXXXxxxXXX" in x else x for x in split]
+            arr.insert(idx[1]+1, "<!kw> <kw>")
 
-        kws_check = []
-        for i in annotation:
-            if type(i) is tuple:
-                kws_check.append(i[0])
+        # join array
+        joined_annotation = ''.join(arr)
+
+        # split array on delimeter
+        split = joined_annotation.split('<kw>')
+
+        # Create annotation for keywords in text
+        annotation = [(x.replace('<!kw> ', ''), "KEY", "#26aaef") if "<!kw>" in x else x for x in split]
 
         return annotation
 
