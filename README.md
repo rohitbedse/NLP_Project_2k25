@@ -14,4 +14,4 @@ This application is a celebration of open-source and the power that programmers 
 give back to the community. This tool was constructed using Streamlit, Huggingface Transformers, 
 Transformers-Interpret, NLTK, Spacy, amongst other open-source Python libraries and models.
 
-You can access a live version of this app here: https://huggingface.co/spaces/miesnerjacob/Multi-task-NLP
+You can access a live version of this app here: https://huggingface.co/spaces/Harshb11/NLP_2k25_Project
